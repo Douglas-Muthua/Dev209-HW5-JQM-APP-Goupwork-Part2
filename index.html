@@ -1,78 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Three Pages Tab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  body { font-family: Arial, sans-serif; }
-  .navbar { margin-bottom: 20px; }
-  .navbar a { padding: 10px; text-decoration: none; background-color: #f0f0f0; color: #333; margin-right: 10px; border-radius: 5px; }
-  .navbar a:hover { background-color: #ddd; }
-  .tab-content { display: none; }
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $('.tab-link').click(function(){
-      var targetTab = $(this).attr('data-target');
-      $('.tab-content').hide();
-      $(targetTab).show();
-    });
-
-    $('#songSubmit').click(function(){
-      var song = $('#songInput').val();
-      $('#songOutput').text(song);
-    });
-
-    $('#artistSubmit').click(function(){
-      var artist = $('#artistInput').val();
-      $('#artistOutput').text(artist);
-    });
-
-    $('#rateSubmit').click(function(){
-      var rating = $('#rateInput').val();
-      $('#rateOutput').text(rating);
-    });
-  });
-</script>
 </head>
 <body>
+<style>
+  .horizontal-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0018c3;
+}
 
-<div class="navbar">
-  <a href="#" class="tab-link" data-target="#song">Song</a>
-  <a href="#" class="tab-link" data-target="#artist">Artist</a>
-  <a href="#" class="tab-link" data-target="#rate">Rate</a>
-  <a href="#" class="tab-link" data-target="#comment">Comment</a>
-</div>
+.horizontal-menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
-<div id="song" class="tab-content">
-  <h2>Favorite Song</h2>
-  <input type="text" id="songInput" placeholder="Enter your favorite song">
-  <button id="songSubmit">Submit</button>
-  <div>Your favorite song: <span id="songOutput"></span></div>
-</div>
+.horizontal-menu .active {
+	background-color: #1cbb09;
+    color: white;
+}
 
-<div id="artist" class="tab-content">
-  <h2>Artist</h2>
-  <input type="text" id="artistInput" placeholder="Enter the artist of the song">
-  <button id="artistSubmit">Submit</button>
-  <div>Artist of the song: <span id="artistOutput"></span></div>
-</div>
+.horizontal-menu li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
 
-<div id="rate" class="tab-content">
-  <h2>Rate</h2>
-  <input type="number" id="rateInput" min="1" max="5" placeholder="Rate from 1 to 5">
-  <button id="rateSubmit">Submit</button>
-  <div>Your rating: <span id="rateOutput"></span></div>
-</div>
-<div id="comment" class="tab-content">
-  <h2>Comment</h2>
-  <input type="text" id="commentInput" placeholder="Enter your comment overall"
-  <button id="commentSubmit">Submit</button>
-  <div>Comment: <span id="commentOuput"></span></div>
-</div>
+.horizontal-menu li:last-child {
+    border-right: none;
+}
 
+.horizontal-menu li a:hover {
+    background-color: #111;
+}
+
+</style>
+
+
+<h1>Washington</h1>
+
+<nav class="navbar navbar-default " role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+	  	<div class="horizontal-menu">
+        <ul>
+            <li><a href="#" class="active">Activities</a></li>
+            
+ 
+            <li><a href="#">Restaurant</a></li>
+            <li><a href="#">Map</a></li>
+        </ul>
+
+    </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+
+
+
+</script>
 </body>
-</html>
-    
+</html> 
