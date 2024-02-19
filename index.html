@@ -1,43 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Washington</title>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+      </style>
+      <title>Washington</title>
+
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     <script>
-      $(document).ready(function() {
-  $('.main-nav').on('click', 'li', function() {
-    $(this).toggleClass('active');
-  });
+    $(document).ready(function() {
+    // Hide all content except for the home section initially
+    $("#activities, #about, #map, #fact").hide();
+
+    // Handle navigation clicks
+    $("nav ul li a").click(function() {
+        var target = $(this).attr("href");
+        $("#content > div").hide();
+        $(target).show();
+    });
 });
-    </script>
-  </head>
-  <body>
-     <div data-role="header" data-theme="b">
-       <h1>Welcome to Washington</h1>
-       <div data-role="navbar">
-         <ul>
-           <li><a href="#"  data-theme="a">Activities</a></li>
-           <li><a href="#"  data-theme="b">About </a></li>
-           <li><a href="#"  data-theme="c">Map</a></li>
-           <li><a href="#"  data-theme="e">Fact</a></li>
-  
-            
-      
-         </ul>
-       </div>
-     </div>
-    
+$(document).ready(function() {
+    $("#data-form").submit(function(e) {
+        e.preventDefault();
         
-     
+        var name = $("#name").val();
+        var location = $("#location").val();
+        var category = $("#category").val();
+        var description = $("#description").val();
+        
+        var newData = new DataEntry(name, location, category, description);
+        dataEntries.push(newData);
+        
+        // Clear form fields after submission
+        $("#name, #location, #description").val('');
+        $("#category").val('Option 1');
+    });
+});
+$(document).ready(function() {
+    // Function to display data entries
+    function displayDataEntries() {
+        $("#entries").empty();
+        dataEntries.forEach(function(entry) {
+            var listItem = $("<li>").text(entry.name);
+            $("#entries").append(listItem);
+        });
+    }
     
-     <div data-role="footer" data-position="fixed">
-        <h3>Copyright All Rights Reserved</h3>
-     </div>
+    // Populate data entries initially
+    displayDataEntries();
+});
+$(document).ready(function() {
+    // Function to display data entries
+    function displayDataEntries() {
+        $("#entries").empty();
+        dataEntries.forEach(function(entry, index) {
+            var listItem = $("<li>").text(entry.name);
+            listItem.click(function() {
+                // Handle click action here
+                // For now, let's just alert the description
+                alert(entry.description);
+            });
+            $("#entries").append(listItem);
+        });
+    }
+    
+    // Populate data entries initially
+    displayDataEntries();
+});
+
+    </script>
+<script>
+  function DataEntry(name, location, category, description) {
+    this.name = name;
+    this.location = location;
+    this.category = category;
+    this.description = description;
+}
+
+var dataEntries = [];
+</script>
+  </head>
+
+  <body>
+    <nav>
+      <h2>Washington</h2>
+      <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#map">Map</a></li>
+          <li><a href="#fact">Fact</a></li>
+      </ul>
+  </nav>
+    
+  <div id="content">
+    <!-- Content will be dynamically loaded here -->
+</div>
+<div id="home">
+  <h1>Welcome to Washington </h1>
+  <p>This website provides information about Washington.</p>
+  <p></p>
+</div>
+
+<div id="activities">
+  <h2>Activities</h2>
+  <p>Learn about the activities you might interesting when comming to Washington</p>
+  <video src="https://www.youtube.com/watch?v=ZYzOgGahqZM" alt="Activities in Washington">
+</div>
+
+<div id="about">
+  <h2>About Washington</h2>
+  <p>Learn more about Washington!</p>
+  <a href="https://heyexplorer.com/what-is-washington-state-known-and-famous-for/#:~:text=Washington%20State%20is%20known%20for%20snow-capped%20volcanic%20mountains%2C,see%2026%20things%20that%20Washington%20is%20known%20for.">About Washington</a>
+</div>
+
+<div id="map">
+  <h2>Map</h2>
+  <p>This is where Washington is located.</p>
+  <a href="https://www.guideoftheworld.com/washington-map.html" >Washington Map</a>
+</div>
+
+<div id="fact">
+  <h2>Fact</h2>
+ <p>These are the fact about Washington</p>
+ <a href="https://thefactfile.org/washington-facts/">Facts</a>
+ <p> Video option!</p>
+ <video scr="https://www.youtube.com/watch?v=hVEDL36JT5M">Facts</video>
+</div>
+     
+
+
+     
   </body>
 </html>
-
-
-
+    
   
