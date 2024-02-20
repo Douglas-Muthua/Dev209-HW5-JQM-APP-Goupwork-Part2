@@ -17,81 +17,205 @@ li {
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-    <script>
-    $(document).ready(function() {
-    // Hide all content except for the home section initially
-    $("#activities, #about, #map, #fact").hide();
+    <script src="script.js"></script>
 
-    // Handle navigation clicks
-    $("nav ul li a").click(function() {
-        var target = $(this).attr("href");
-        $("#content > div").hide();
-        $(target).show();
-    });
-});
-$(document).ready(function() {
-    $("#data-form").submit(function(e) {
-        e.preventDefault();
-        
-        var name = $("#name").val();
-        var location = $("#location").val();
-        var category = $("#category").val();
-        var description = $("#description").val();
-        
-        var newData = new DataEntry(name, location, category, description);
-        dataEntries.push(newData);
-        
-        // Clear form fields after submission
-        $("#name, #location, #description").val('');
-        $("#category").val('Option 1');
-    });
-});
-$(document).ready(function() {
-    // Function to display data entries
-    function displayDataEntries() {
-        $("#entries").empty();
-        dataEntries.forEach(function(entry) {
-            var listItem = $("<li>").text(entry.name);
-            $("#entries").append(listItem);
-        });
-    }
-    
-    // Populate data entries initially
-    displayDataEntries();
-});
-$(document).ready(function() {
-    // Function to display data entries
-    function displayDataEntries() {
-        $("#entries").empty();
-        dataEntries.forEach(function(entry, index) {
-            var listItem = $("<li>").text(entry.name);
-            listItem.click(function() {
-                // Handle click action here
-                // For now, let's just alert the description
-                alert(entry.description);
-            });
-            $("#entries").append(listItem);
-        });
-    }
-    
-    // Populate data entries initially
-    displayDataEntries();
-});
-
-    </script>
-<script>
-  function DataEntry(name, location, category, description) {
-    this.name = name;
-    this.location = location;
-    this.category = category;
-    this.description = description;
-}
-
-var dataEntries = [];
-</script>
   </head>
 
   <body>
+
+
+    <!-- homepage -->
+
+    <div id="home" class tab-content data-role="page">
+      <div data-role="header" data-theme='a'>
+
+        <h1>WELCOME TO Washington</h1>
+        <br/>
+
+
+        <div data-role="navbar" class="navbar" data-theme='a'>
+          <ul>
+            <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
+            <li><a href="#events" class="tab-link" data-target="events">events</a></li>
+            <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
+            <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+          </ul>
+  
+        </div>
+
+
+
+
+      </div>
+ 
+
+      <h1>Activites List</h1>
+      <ul id="view"></ul>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <div data-role="footer" data-theme='b'>
+        <h1>copyright 2024 groupwork</h1>
+      </div>
+
+    </div>
+
+
+
+    <!-- homepage END -->
+
+
+<!-- events list -->
+
+<div id="events" class tab-content data-role="page">
+  <div data-role="header" data-theme='a'>
+    <h1>PLAN YOUR EVENTS</h1>
+    <br/>
+    <div data-role="navbar" class="navbar" data-theme='a'>
+      <ul>
+        <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
+        <li><a href="#events" class="tab-link" data-target="events">events</a></li>
+        <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
+        <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+      </ul>
+    
+    </div>
+
+  </div>
+
+
+
+
+  <h1>Add Events</h1>
+
+
+  <input type="text" id="Eventname" placeholder="Enter your Event name">
+  <input type="text" id="Event_Location" placeholder="Enter your Event location">
+  <input type="time" id="Event_Time" name="Event_Time">
+  <br/>
+  <button id="listSubmit" onclick="">submit</button>
+
+
+
+  <br/>
+  <br/>
+  <br/>
+
+
+  <div data-role="footer" data-theme='b'>
+    <h1>copyright 2024 groupwork</h1>
+  </div>
+
+</div>
+
+
+
+<!-- events list END -->
+
+
+
+
+
+<!-- location list -->
+
+<div id="locations" class tab-content data-role="page">
+  <div data-role="header" data-theme='a'>
+    <h1>PLAN WHAT LOCATIONS TO VISIT</h1>
+    <br/>
+    <div data-role="navbar" class="navbar" data-theme='a'>
+      <ul>
+        <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
+        <li><a href="#events" class="tab-link" data-target="events">events</a></li>
+        <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
+        <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+      </ul>
+    
+    </div>
+
+  </div>
+
+
+
+
+  <h1>Add Location</h1>
+
+
+  <input type="text" id="locations_Name" placeholder="Enter your Event name">
+  <input type="text" id="locations_address" placeholder="Enter your locations address">
+
+  <br/>
+  <button id="listSubmit" onclick="">submit</button>
+
+
+
+  <br/>
+  <br/>
+  <br/>
+
+
+  <div data-role="footer" data-theme='b'>
+    <h1>copyright 2024 groupwork</h1>
+  </div>
+
+</div>
+
+
+
+<!-- locations list END -->
+
+
+
+
+<!-- map -->
+
+<div id="maps" class tab-content data-role="page">
+  <div data-role="header" data-theme='a'>
+    <h1>TAKE A LOOK AT THE MAP</h1>
+    <br/>
+    <div data-role="navbar" class="navbar" data-theme='a'>
+      <ul>
+        <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
+        <li><a href="#events" class="tab-link" data-target="events">events</a></li>
+        <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
+        <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+      </ul>
+    
+    </div>
+
+  </div>
+
+
+
+
+  <h1>map</h1>
+
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5556890.701051043!2d-126.1638753311888!3d47.151478352933495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485e5ffe7c3b0f9%3A0x944278686c5ff3ba!2sWashington!5e0!3m2!1sen!2sus!4v1708386785341!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+
+
+
+  <br/>
+  <br/>
+  <br/>
+
+
+  <div data-role="footer" data-theme='b'>
+    <h1>copyright 2024 groupwork</h1>
+  </div>
+
+</div>
+
+
+
+<!-- map  END -->
+
+
+
+
     <nav>
       <h2>Washington</h2>
       <ul>
