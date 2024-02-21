@@ -1,69 +1,84 @@
-$(document).ready(function() {
-    // Hide all content except for the home section initially
-    $("#activities, #about, #map, #fact").hide();
+// $(document).ready(function() {
+//     // Hide all content except for the home section initially
+//     $("#activities, #about, #map, #fact").hide();
 
-    // Handle navigation clicks
-    $("nav ul li a").click(function() {
-        var target = $(this).attr("href");
-        $("#content > div").hide();
-        $(target).show();
-    });
-});
-$(document).ready(function() {
-    $("#data-form").submit(function(e) {
-        e.preventDefault();
+//     // Handle navigation clicks
+//     $("nav ul li a").click(function() {
+//         var target = $(this).attr("href");
+//         $("#content > div").hide();
+//         $(target).show();
+//     });
+// });
+// $(document).ready(function() {
+//     $("#data-form").submit(function(e) {
+//         e.preventDefault();
         
-        var name = $("#name").val();
-        var location = $("#location").val();
-        var category = $("#category").val();
-        var description = $("#description").val();
+//         var name = $("#name").val();
+//         var location = $("#location").val();
+//         var category = $("#category").val();
+//         var description = $("#description").val();
         
-        var newData = new DataEntry(name, location, category, description);
-        dataEntries.push(newData);
+//         var newData = new DataEntry(name, location, category, description);
+//         dataEntries.push(newData);
         
-        // Clear form fields after submission
-        $("#name, #location, #description").val('');
-        $("#category").val('Option 1');
-    });
-});
-$(document).ready(function() {
-    // Function to display data entries
-    function displayDataEntries() {
-        $("#entries").empty();
-        dataEntries.forEach(function(entry) {
-            var listItem = $("<li>").text(entry.name);
-            $("#entries").append(listItem);
-        });
-    }
+//         // Clear form fields after submission
+//         $("#name, #location, #description").val('');
+//         $("#category").val('Option 1');
+//     });
+// });
+// $(document).ready(function() {
+//     // Function to display data entries
+//     function displayDataEntries() {
+//         $("#entries").empty();
+//         dataEntries.forEach(function(entry) {
+//             var listItem = $("<li>").text(entry.name);
+//             $("#entries").append(listItem);
+//         });
+//     }
     
-    // Populate data entries initially
-    displayDataEntries();
-});
-$(document).ready(function() {
-    // Function to display data entries
-    function displayDataEntries() {
-        $("#entries").empty();
-        dataEntries.forEach(function(entry, index) {
-            var listItem = $("<li>").text(entry.name);
-            listItem.click(function() {
-                // Handle click action here
-                // For now, let's just alert the description
-                alert(entry.description);
-            });
-            $("#entries").append(listItem);
-        });
-    }
+//     // Populate data entries initially
+//     displayDataEntries();
+// });
+// $(document).ready(function() {
+//     // Function to display data entries
+//     function displayDataEntries() {
+//         $("#entries").empty();
+//         dataEntries.forEach(function(entry, index) {
+//             var listItem = $("<li>").text(entry.name);
+//             listItem.click(function() {
+//                 // Handle click action here
+//                 // For now, let's just alert the description
+//                 alert(entry.description);
+//             });
+//             $("#entries").append(listItem);
+//         });
+//     }
     
-    // Populate data entries initially
-    displayDataEntries();
-});
+//     // Populate data entries initially
+//     displayDataEntries();
+// });
 
 
-  function DataEntry(name, location, category, description) {
-    this.name = name;
-    this.location = location;
-    this.category = category;
-    this.description = description;
+//   function DataEntry(name, location, category, description) {
+//     this.name = name;
+//     this.location = location;
+//     this.category = category;
+//     this.description = description;
+// }
+
+// var dataEntries = [];
+
+
+
+
+let atctivites_List = [];
+
+function pushData(){
+    let event_type = document.getElementById("event_type"); 
+    let event_name = document.getElementById("Eventname");
+    let event_location = document.getElementById("Event_location");
+    let event_time = document.getElementById("Event_Time");
+    var node = document.createTextNode(event_type+" |"+ event_name + event_location + event_time);
+    newtd.appendChild(node);
+    view.appendChild(newtd)
 }
-
-var dataEntries = [];

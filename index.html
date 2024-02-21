@@ -99,20 +99,20 @@ li {
 <h3>Some upcoming events you should try!</h3>
 <a href="https://visitseattle.org/things-to-do/events/">Upcoming events</a>
 <label for="event name">Event Categories:</label> 
-    <select name="choice-name" id="event-name"> 
-        <option value="choice"></option> 
+    <select name="choice-name" id="event_type"> 
         <option value="music">Music</option>
         <option value="movie">Movie</option> 
         <option value="museum">Museum</option> 
         <option value="dance">Dance</option> 
         <option value="festival">Festival</option>
+        <option value="other">Other</option> 
     </select>
 
   <input type="text" id="Eventname" placeholder="Enter your Event name">
   <input type="text" id="Event_Location" placeholder="Enter your Event location">
   <input type="time" id="Event_Time" name="Event_Time">
   <br/>
-  <button id="listSubmit" onclick="">submit</button>
+  <button id="listSubmit" onclick="pushData()">submit</button>
 
 
 
