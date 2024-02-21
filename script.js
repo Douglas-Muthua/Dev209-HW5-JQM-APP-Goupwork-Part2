@@ -71,7 +71,7 @@
 
 
 
-let atctivites_List = [];
+let activites_List = [];
 
 function pushData(){
     let event_type = document.getElementById("event_type"); 
