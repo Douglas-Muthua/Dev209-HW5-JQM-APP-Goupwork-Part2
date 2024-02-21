@@ -71,7 +71,7 @@
 
 
 
-let activites_List = [];
+let activities_List = [];
 
 function pushData(){
     let event_type = document.getElementById("event_type"); 
@@ -82,3 +82,10 @@ function pushData(){
     newtd.appendChild(node);
     view.appendChild(newtd)
 }
+$(".activitiespage").click(function() {
+        $("#event").css("visibility", "hidden");
+        $("#location").css("visibility", "hidden");
+        $("#map").css("visibility", "hidden");
+  
+    });
+
