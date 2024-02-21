@@ -71,14 +71,19 @@
 
 
 
-let atctivites_List = [];
+let activities_List = [];
 
 function pushData(){
-    let event_type = document.getElementById("event_type"); 
-    let event_name = document.getElementById("Eventname");
-    let event_location = document.getElementById("Event_location");
-    let event_time = document.getElementById("Event_Time");
-    var node = document.createTextNode(event_type+" |"+ event_name + event_location + event_time);
-    newtd.appendChild(node);
-    view.appendChild(newtd)
+    let view = document.getElementById("view");
+    let newTd = document.createElement("li");
+    var event_type = document.getElementById("event_type").value; 
+    var event_name = document.getElementById("Eventname").value;
+    var event_location = document.getElementById("Event_Location").value;
+    var event_time = document.getElementById("Event_Time").value;
+    var node = document.createTextNode(event_type +" |"+ event_name + event_location + event_time);
+    newTd.appendChild(node);
+    view.appendChild(newTd);
+
+console.log(node)
+    
 }
