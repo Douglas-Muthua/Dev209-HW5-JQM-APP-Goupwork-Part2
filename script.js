@@ -74,14 +74,17 @@
 let activities_List = [];
 
 function pushData(){
-    let event_type = document.getElementById("event_type"); 
-    let event_name = document.getElementById("Eventname");
-    let event_location = document.getElementById("Event_location");
-    let event_time = document.getElementById("Event_Time");
+    let view =document.getElementById("view");
+    let newtd = document.createElement("li");
+    let event_type = document.getElementById("event_type").value; 
+    let event_name = document.getElementById("Eventname").value;
+    let event_location = document.getElementById("Event_Location").value;
+    let event_time = document.getElementById("Event_Time").value;
     var node = document.createTextNode(event_type+" |"+ event_name + event_location + event_time);
     newtd.appendChild(node);
     view.appendChild(newtd)
 }
+
 $(".activitiespage").click(function() {
         $("#event").css("visibility", "hidden");
         $("#location").css("visibility", "hidden");
