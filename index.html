@@ -4,12 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Washington</title>
+    <title>Song collection</title>
 
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script src="script.js"></script>
+<script>
+  let add_List = [];
+
+function pushData(){
+    let view =document.getElementById("view");
+    let newtd = document.createElement("li");
+    let song_artist = document.getElementById("Song_artist").value; 
+    let song_name = document.getElementById("Song_name").value;
+    let song_year = document.getElementById("Song_year").value;
+    let song_link = document.getElementById("Song_link").value;
+    let song_rate = document.getElementById("Song_rate")
+    var node = document.createTextNode(+" song_artist "+ song_name + song_rate + song_year + song_link);
+    newtd.appendChild(node);
+    view.appendChild(newtd)
+}
+navbar = document.querySelector(".navbar").querySelectorAll("a");
+console.log(navbar);
+navbar.forEach(element =>{
+  element.addSongIistener("click",function(){
+    navbar.forEach(nav => nav.classList.remove("active"))
+    this.classList.add("active");
+  
+})
+
+          
+$(".addSongPage").click(function() {
+        $("#add").css("visibility", "hidden");
+        $("#list").css("visibility", "hidden");
+       
+  
+    });
+</script>
 
   </head>
 
@@ -21,16 +53,16 @@
     <div id="home" class="tab-content"  data-role="page">
       <div data-role="header" data-theme='a'>
 
-        <h1>WELCOME TO Washington</h1>
+        <h1>WELCOME TO Song Collection!</h1>
         <br/>
 
 
         <div data-role="navbar" class="navbar" data-theme='a'>
           <ul>
-            <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
-            <li><a href="#events" class="tab-link" data-target="events">events</a></li>
-            <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
-            <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+            <li><a href="#home" class="tab-link" data-target="home">My song</a></li>
+            <li><a href="#add" class="tab-link" data-target="add">Add a song</a></li>
+            <li><a href="#list" class="tab-link" data-target="list">My song list</a></li>
+            
           </ul>
   
         </div>
@@ -41,14 +73,13 @@
       </div>
  
 
-      <h1>Activites List</h1>
+      <h1>My Song</h1>
       <ul id="view"></ul>
-      <h3>Let's Start</h3>
+      <h3>My collection of songs</h3>
       
-       <a href="https://secretseattle.co/things-to-do-july-seattle/">Summer Season</a>
+  
      
-      <input type="text" id="ActivitiesList" placeholder="Enter your favorite activites:">
-      <button id="listSubmit" onclick="">submit</button>
+  
 
       <br/>
       <br/>
@@ -65,19 +96,19 @@
     <!-- homepage END -->
 
 
-<!-- events list -->
+<!-- add list -->
 
-<div id="events" class tab-content data-role="page">
+<div id="add" class tab-content data-role="page">
   <div data-role="header" data-theme='a'>
-    <h1>PLAN YOUR EVENTS</h1>
+    <h1>Add your song</h1>
     
     <br/>
     <div data-role="navbar" class="navbar" data-theme='a'>
       <ul>
-        <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
-        <li><a href="#events" class="tab-link" data-target="events">events</a></li>
-        <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
-        <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+        <li><a href="#home" class="tab-link" data-target="home">My song</a></li>
+        <li><a href="#add" class="tab-link" data-target="add">Add a song</a></li>
+        <li><a href="#list" class="tab-link" data-target="list">My song list</a></li>
+       
       </ul>
     
     </div>
@@ -87,24 +118,29 @@
 
 
 
-  <h1>Add Events</h1>
-<h3>Some upcoming events you should try!</h3>
-<a href="https://visitseattle.org/things-to-do/events/">Upcoming events</a>
-<label for="event name">Event Categories:</label> 
+  <h1>Add song</h1>
+<h3>Add your favorite song </h3>
+
+<label for="song name">Select song genre:</label> 
     <select name="choice-name" id="event_type"> 
-        <option value="music">Music</option>
-        <option value="movie">Movie</option> 
-        <option value="museum">Museum</option> 
-        <option value="dance">Dance</option> 
-        <option value="festival">Festival</option>
+        <option value="music">Musical</option>
+        <option value="movie">Classical</option> 
+        <option value="museum">Hiphip</option> 
+        <option value="dance">Country</option> 
+        <option value="festival">Pop</option>
         <option value="other">Other</option> 
     </select>
-
-  <input type="text" id="Eventname" placeholder="Enter your Event name">
-  <input type="text" id="Event_Location" placeholder="Enter your Event location">
-  <input type="time" id="Event_Time" name="Event_Time">
+    <input type="text" id="Song_name" placeholder="Enter your song name">
+ <input type="text" id="Song_link" placeholder="Enter the song URL">
+  <input type="text" id="Song_rate" min="1" max="10" placeholder="Rate the song from 1-10">
+  <input type="text" id="Song_artist" placeholder="Enter the artist of song">
+  <input type="text" id="Song_year" placeholder="Enter the released year"
+  
+  
+    
   <br/>
   <button type="submit" id="listSubmit" onclick="pushData()">submit</button>
+  <button type-"clear" id="listClear" onclick="pushData()">Clear</button>
 
 
 
@@ -121,24 +157,24 @@
 
 
 
-<!-- events list END -->
+<!-- add list END -->
 
 
 
 
 
-<!-- location list -->
+<!-- Song list -->
 
-<div id="locations" class tab-content data-role="page">
+<div id="list" class tab-content data-role="page">
   <div data-role="header" data-theme='a'>
-    <h1>PLAN WHAT LOCATIONS TO VISIT</h1>
+    <h1>My Song List</h1>
     <br/>
     <div data-role="navbar" class="navbar" data-theme='a'>
       <ul>
-        <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
-        <li><a href="#events" class="tab-link" data-target="events">events</a></li>
-        <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
-        <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
+        <li><a href="#home" class="tab-link" data-target="home">My song</a></li>
+        <li><a href="#add" class="tab-link" data-target="add">Add a song</a></li>
+        <li><a href="#list" class="tab-link" data-target="list">My song list</a></li>
+       
       </ul>
     
     </div>
@@ -148,15 +184,11 @@
 
 
 
-  <h1>Add Location</h1>
-  <h3>Where should you go during the first visit? Let's take a look!</h3>
+  <h1>My </h1>
+  <h3>Here my song!</h3>
 
-<a href="https://www.youtube.com/watch?v=XIeCx9bxBBc">Recommend Location</a>
-  <input type="text" id="locations_Name" placeholder="Enter your Event name">
-  <input type="text" id="locations_address" placeholder="Enter your locations address">
 
-  <br/>
-  <button id="listSubmit" onclick="">submit</button>
+  
 
 
 
@@ -173,109 +205,8 @@
 
 
 
-<!-- locations list END -->
+<!-- Song list END -->
 
 
 
 
-<!-- map -->
-
-<div id="maps" class tab-content data-role="page">
-  <div data-role="header" data-theme='a'>
-    <h1>TAKE A LOOK AT THE MAP</h1>
-    <br/>
-    <div data-role="navbar" class="navbar" data-theme='a'>
-      <ul>
-        <li><a href="#home" class="tab-link" data-target="home">activites list</a></li>
-        <li><a href="#events" class="tab-link" data-target="events">events</a></li>
-        <li><a href="#locations" class="tab-link" data-target="locations">locations</a></li>
-        <li><a href="#maps" class="tab-link" data-target="map">map</a></li>
-      </ul>
-    
-    </div>
-
-  </div>
-
-
-
-
-  <h1>map</h1>
-
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5556890.701051043!2d-126.1638753311888!3d47.151478352933495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485e5ffe7c3b0f9%3A0x944278686c5ff3ba!2sWashington!5e0!3m2!1sen!2sus!4v1708386785341!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-
-
-
-
-  <br/>
-  <br/>
-  <br/>
-
-
-  <div data-role="footer" data-theme='b'>
-    <h1>copyright 2024 groupwork</h1>
-  </div>
-
-</div>
-
-
-
-<!-- map END-->
-
-
-<!--
-
-    <nav>
-      <h2>Washington</h2>
-      <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#activities">Activities</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#map">Map</a></li>
-          <li><a href="#fact">Fact</a></li>
-      </ul>
-  </nav>
-    
-  <div id="content">
-     Content will be dynamically loaded here 
-</div>
-
-<div id="home">
-  <h1>Welcome to Washington </h1>
-  <p>This website provides information about Washington.</p>
-  <p></p>
-</div>
-
-<div id="activities">
-  <h2>Activities</h2>
-  <p>Learn about the activities you might interesting when comming to Washington</p>
-  <video src="https://www.youtube.com/watch?v=ZYzOgGahqZM" alt="Activities in Washington">
-</div>
-
-<div id="about">
-  <h2>About Washington</h2>
-  <p>Learn more about Washington!</p>
-  <a href="https://heyexplorer.com/what-is-washington-state-known-and-famous-for/#:~:text=Washington%20State%20is%20known%20for%20snow-capped%20volcanic%20mountains%2C,see%2026%20things%20that%20Washington%20is%20known%20for.">About Washington</a>
-</div>
-
-<div id="map">
-  <h2>Map</h2>
-  <p>This is where Washington is located.</p>
-  <a href="https://www.guideoftheworld.com/washington-map.html" >Washington Map</a>
-</div>
-
-<div id="fact">
-  <h2>Fact</h2>
- <p>These are the fact about Washington</p>
- <a href="https://thefactfile.org/washington-facts/">Facts</a>
- <p> Video option!</p>
- <video scr="https://www.youtube.com/watch?v=hVEDL36JT5M">Facts</video>
-</div>
-     
-
-
-     -->
-  </body>
-</html>
-    
