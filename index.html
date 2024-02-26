@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script src="script.js"></script>
 <script>
-  let add_List = [];
+  let song_List = [];
 
 function pushData(){
     let view =document.getElementById("view");
@@ -40,6 +40,81 @@ $(".addSongPage").click(function() {
         $("#list").css("visibility", "hidden");
        
   
+    });
+    $(document).ready(function() {
+    var movies = [];
+
+    $("#add-song").click(function() {
+        var title = $("#title").val();
+        var genre = $("#genre").val();
+        var rating = $("#rating").val();
+        var year = $("#year").val();
+
+        song.push({
+            title: title,
+            genre: genre,
+            rating: rating,
+            year: year
+        });
+
+        $("#song").append(
+            `<tr>
+                <td>${title}</td>
+                <td>${genre}</td>
+                <td>${rating}</td>
+                <td>${year}</td>
+            </tr>`
+        );
+
+        $("#title").val("");
+        $("#genre").val("");
+        $("#rating").val("");
+        $("#year").val("");
+    });
+});
+$(document).ready(function() {
+        // ... (existing code from part 3)
+
+        $("#sort-genre").click(function() {
+            song.sort(function(a, b) {
+                return a.genre.localeCompare(b.genre);
+            });
+
+            $("#song").empty();
+
+            for (var i = 0; i < song.length; i++) {
+                $("#song").append(
+                    `<tr>
+                        <td>${song[i].title}</td>
+                        <td>${song[i].genre}</td>
+                        <td>${song[i].rating}</td>
+                        <td>${song[i].year}</td>
+                    </tr>`
+                );
+            }
+        });
+    });
+    $(document).ready(function() {
+        // ... (existing code from part 3)
+
+        $("#sort-rating").click(function() {
+            song.sort(function(a, b) {
+                return b.rating - a.rating;
+            });
+
+            $("#song").empty();
+
+            for (var i = 0; i < song.length; i++) {
+                $("#song").append(
+                    `<tr>
+                        <td>${song[i].title}</td>
+                        <td>${song[i].genre}</td>
+                        <td>${song[i].rating}</td>
+                        <td>${song[i].year}</td>
+                    </tr>`
+                );
+            }
+        });
     });
 </script>
 
@@ -188,8 +263,9 @@ $(".addSongPage").click(function() {
   <h3>Here my song!</h3>
 
 
-  
+  <button type="button" id="sort-genre">Sort by Genre</button>
 
+  <button type="button" id="sort-rating">Sort by Rating</button>
 
 
   <br/>
