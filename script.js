@@ -99,7 +99,7 @@
        // $("#location").css("visibility", "hidden");
        // $("#map").css("visibility", "hidden");
 
-
+<script>
   let song_List = [];
 
 function pushData(){
@@ -220,5 +220,5 @@ $(document).ready(function() {
 
 
   
-    });
+
 
