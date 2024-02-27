@@ -71,33 +71,154 @@
 
 
 
-let activities_List = [];
+//let activities_List = [];
+
+//function pushData(){
+   // let view =document.getElementById("view");
+   // let newtd = document.createElement("li");
+   // let event_type = document.getElementById("event_type").value; 
+   // let event_name = document.getElementById("Eventname").value;
+   // let event_location = document.getElementById("Event_Location").value;
+   // let event_time = document.getElementById("Event_Time").value;
+   // var node = document.createTextNode(event_type+" |"+ event_name + event_location + event_time);
+   // newtd.appendChild(node);
+    //view.appendChild(newtd)
+//}
+//navbar = document.querySelector(".navbar").querySelectorAll("a");
+//console.log(navbar);
+//navbar.forEach(element =>{
+//  element.addEventIistener("click",function(){
+ //   navbar.forEach(nav => nav.classList.remove("active"))
+  //  this.classList.add("active");
+  
+//})
+
+          
+//$(".activitiespage").click(function() {
+       // $("#event").css("visibility", "hidden");
+       // $("#location").css("visibility", "hidden");
+       // $("#map").css("visibility", "hidden");
+
+
+  let song_List = [];
 
 function pushData(){
     let view =document.getElementById("view");
     let newtd = document.createElement("li");
-    let event_type = document.getElementById("event_type").value; 
-    let event_name = document.getElementById("Eventname").value;
-    let event_location = document.getElementById("Event_Location").value;
-    let event_time = document.getElementById("Event_Time").value;
-    var node = document.createTextNode(event_type+" |"+ event_name + event_location + event_time);
+    let song_artist = document.getElementById("Song_artist").value; 
+    let song_name = document.getElementById("Song_name").value;
+    let song_year = document.getElementById("Song_year").value;
+    let song_link = document.getElementById("Song_link").value;
+    let song_rate = document.getElementById("Song_rate")
+    var node = document.createTextNode(+" song_artist "+ song_name + song_rate + song_year + song_link);
     newtd.appendChild(node);
     view.appendChild(newtd)
 }
 navbar = document.querySelector(".navbar").querySelectorAll("a");
 console.log(navbar);
 navbar.forEach(element =>{
-  element.addEventIistener("click",function(){
+  element.addSongIistener("click",function(){
     navbar.forEach(nav => nav.classList.remove("active"))
     this.classList.add("active");
   
 })
 
           
-$(".activitiespage").click(function() {
-        $("#event").css("visibility", "hidden");
-        $("#location").css("visibility", "hidden");
-        $("#map").css("visibility", "hidden");
+$(".addSong").click(function() {
+        $("#add").css("visibility", "hidden");
+        $("#list").css("visibility", "hidden");
+       
+  
+    });
+    $(document).ready(function() {
+    var song = [];
+
+    $("#addSong").click(function() {
+        var title = $("#title").val();
+        var genre = $("#genre").val();
+        var rating = $("#rating").val();
+        var year = $("#year").val();
+
+        song.push({
+            title: title,
+            genre: genre,
+            rating: rating,
+            year: year
+        });
+
+        $("#addSong").append(
+            `<tr>
+                <td>${title}</td>
+                <td>${genre}</td>
+                <td>${rating}</td>
+                <td>${year}</td>
+            </tr>`
+        );
+
+        $("#title").val("");
+        $("#genre").val("");
+        $("#rating").val("");
+        $("#year").val("");
+    });
+});
+$(document).ready(function() {
+        // ... (existing code from part 3)
+
+        $("#sort-genre").click(function() {
+            list.sort(function(a, b) {
+                return a.genre.localeCompare(b.genre);
+            });
+
+            $("#list").empty();
+
+            for (var i = 0; i < list.length; i++) {
+                $("#list").append(
+                    `<tr>
+                        <td>${list[i].title}</td>
+                        <td>${list[i].genre}</td>
+                        <td>${list[i].rating}</td>
+                        <td>${list[i].year}</td>
+                    </tr>`
+                );
+            }
+        });
+    });
+    $(document).ready(function() {
+        // ... (existing code from part 3)
+
+        $("#sort-rating").click(function() {
+            list.sort(function(a, b) {
+                return b.rating - a.rating;
+            });
+
+            $("#list").empty();
+
+            for (var i = 0; i < list.length; i++) {
+                $("#list").append(
+                    `<tr>
+                        <td>${list[i].title}</td>
+                        <td>${list[i].genre}</td>
+                        <td>${list[i].rating}</td>
+                        <td>${list[i].year}</td>
+                    </tr>`
+                );
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
   
     });
 
