@@ -35,16 +35,16 @@ navbar.forEach(element =>{
 })
 
           
-$(".addSongPage").click(function() {
+$(".addSong").click(function() {
         $("#add").css("visibility", "hidden");
         $("#list").css("visibility", "hidden");
        
   
     });
     $(document).ready(function() {
-    var movies = [];
+    var song = [];
 
-    $("#add-song").click(function() {
+    $("#addSong").click(function() {
         var title = $("#title").val();
         var genre = $("#genre").val();
         var rating = $("#rating").val();
@@ -57,7 +57,7 @@ $(".addSongPage").click(function() {
             year: year
         });
 
-        $("#song").append(
+        $("#addSong").append(
             `<tr>
                 <td>${title}</td>
                 <td>${genre}</td>
@@ -76,19 +76,19 @@ $(document).ready(function() {
         // ... (existing code from part 3)
 
         $("#sort-genre").click(function() {
-            song.sort(function(a, b) {
+            list.sort(function(a, b) {
                 return a.genre.localeCompare(b.genre);
             });
 
-            $("#song").empty();
+            $("#list").empty();
 
-            for (var i = 0; i < song.length; i++) {
-                $("#song").append(
+            for (var i = 0; i < list.length; i++) {
+                $("#list").append(
                     `<tr>
-                        <td>${song[i].title}</td>
-                        <td>${song[i].genre}</td>
-                        <td>${song[i].rating}</td>
-                        <td>${song[i].year}</td>
+                        <td>${list[i].title}</td>
+                        <td>${list[i].genre}</td>
+                        <td>${list[i].rating}</td>
+                        <td>${list[i].year}</td>
                     </tr>`
                 );
             }
@@ -98,19 +98,19 @@ $(document).ready(function() {
         // ... (existing code from part 3)
 
         $("#sort-rating").click(function() {
-            song.sort(function(a, b) {
+            list.sort(function(a, b) {
                 return b.rating - a.rating;
             });
 
-            $("#song").empty();
+            $("#list").empty();
 
-            for (var i = 0; i < song.length; i++) {
-                $("#song").append(
+            for (var i = 0; i < list.length; i++) {
+                $("#list").append(
                     `<tr>
-                        <td>${song[i].title}</td>
-                        <td>${song[i].genre}</td>
-                        <td>${song[i].rating}</td>
-                        <td>${song[i].year}</td>
+                        <td>${list[i].title}</td>
+                        <td>${list[i].genre}</td>
+                        <td>${list[i].rating}</td>
+                        <td>${list[i].year}</td>
                     </tr>`
                 );
             }
@@ -193,18 +193,18 @@ $(document).ready(function() {
 
 
 
-  <h1>Add song</h1>
+  <h1>Add Song</h1>
 <h3>Add your favorite song </h3>
 
-<label for="song name">Select song genre:</label> 
-    <select name="choice-name" id="event_type"> 
-        <option value="music">Musical</option>
-        <option value="movie">Classical</option> 
-        <option value="museum">Hiphip</option> 
-        <option value="dance">Country</option> 
-        <option value="festival">Pop</option>
+<select id="genre">
+        <option value="musical">Musical</option>
+        <option value="classical">Classical</option> 
+        <option value="hiphop">Hiphop</option> 
+        <option value="country">Country</option> 
+        <option value="pop">Pop</option>
         <option value="other">Other</option> 
     </select>
+    <br>
     <input type="text" id="Song_name" placeholder="Enter your song name">
  <input type="text" id="Song_link" placeholder="Enter the song URL">
   <input type="text" id="Song_rate" min="1" max="10" placeholder="Rate the song from 1-10">
@@ -282,6 +282,7 @@ $(document).ready(function() {
 
 
 <!-- Song list END -->
+
 
 
 
